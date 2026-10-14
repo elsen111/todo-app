@@ -1,4 +1,4 @@
-# 📝 Todo App — Full-Stack Task Management
+# 📝 TaskWise — Full-Stack Task Management
 
 A full-stack Todo application built with **React, TypeScript, Java 21, and Spring Boot**. It provides a secure environment for managing personal tasks, organizing daily activities, and tracking productivity.
 
