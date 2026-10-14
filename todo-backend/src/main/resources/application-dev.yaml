@@ -1,0 +1,41 @@
+  spring:
+    datasource:
+      url: ${DB_URL:jdbc:postgresql://localhost:5432/todo_db}
+      username: ${DB_USERNAME:postgres}
+      password: ${DB_PASSWORD:postgres}
+      driver-class-name: org.postgresql.Driver
+
+    jpa:
+      hibernate:
+        ddl-auto: validate
+      show-sql: true
+      properties:
+        hibernate:
+          format_sql: true
+
+    mail:
+      host: ${MAIL_HOST:localhost}
+      port: ${MAIL_PORT:1025}
+      username: ${MAIL_USERNAME:}
+      password: ${MAIL_PASSWORD:}
+      properties:
+        mail:
+          smtp:
+            auth: false
+            starttls:
+              enable: false
+
+  springdoc:
+    swagger-ui:
+      enabled: true
+    api-docs:
+      enabled: true
+
+  logging:
+    level:
+      root: INFO
+      com.todo: DEBUG
+      org.springframework.security: DEBUG
+      org.hibernate.SQL: DEBUG
+      org.hibernate.orm.jdbc.bind: TRACE
+      liquibase: INFO
