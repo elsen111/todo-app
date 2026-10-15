@@ -17,6 +17,10 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
+# Operating System
+.DS_Store
+Thumbs.db
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
@@ -36,6 +40,11 @@ out/
 ### VS Code ###
 .vscode/
 
-#Local environment files
+# Environment variables and secrets
 .env
-.env.local
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/

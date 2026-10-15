@@ -2,6 +2,8 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '4.1.1'
     id 'io.spring.dependency-management' version '1.1.7'
+
+    id 'com.diffplug.spotless' version '6.25.0'
 }
 
 group = 'com'
@@ -36,11 +38,12 @@ dependencies {
 //    Open API documentation
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.1.0'
 
-//    Mapping
+//    Lombok | Mapstruct
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     implementation 'org.mapstruct:mapstruct:1.6.3'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
+    annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
 
     // JWT
     implementation 'io.jsonwebtoken:jjwt-api:0.13.0'
@@ -63,9 +66,43 @@ dependencies {
     testImplementation 'org.testcontainers:junit-jupiter'
     testImplementation 'org.testcontainers:postgresql'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testAnnotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
 
 }
 
+//Test tasks
 tasks.named('test') {
     useJUnitPlatform()
+
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+        showExceptions true
+        exceptionFormat 'full'
+        showStandardStreams = false
+        showCauses true
+        showStackTraces true
+
+        failFast = true
+    }
+}
+
+// Compiler warnings and Annotation processing
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << "-Xlint:all"
+    options.compilerArgs << "-Xlint:-processing"
+    options.compilerArgs << "-Werror"
+
+    // Automatically wires MapStruct outputs as standard Spring Beans (@Component)
+    options.compilerArgs << "-Amapstruct.defaultComponentModel=spring"
+    options.compilerArgs << "-Amapstruct.unmappedTargetPolicy=ERROR"
+}
+
+//Formatting
+spotless {
+    java {
+        importOrder()
+        removeUnusedImports()
+        googleJavaFormat('1.24.0')
+    }
 }
