@@ -9,4 +9,20 @@
   --color-main: #14181f;
   --color-secondary: #5b6472;
   --color-green: #0b5a53;
+
+  --breakpoint-xs: 475px;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  scroll-behavior: smooth;
+}
+
+a,
+button {
+  transition: all;
+  transition-duration: 0.4s;
 }

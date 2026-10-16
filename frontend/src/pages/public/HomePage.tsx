@@ -1,14 +1,12 @@
 import SEO from "../../components/common/seo/SEO"
+import Header from "../../components/homePage/Header"
 
 
 const HomePage = () => {
   return (
     <>
       <SEO /> 
-      <h1 className="bg-primary">
-      HomePage
-
-      </h1>
+      <Header />
     </>
   )
 }
