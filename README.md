@@ -46,7 +46,7 @@ The application follows a RESTful architecture with JWT-based authentication, Po
 - Secure password hashing.
 - User-specific data access.
 - Spring Security integration.
-- API rate limiting.
+- API rate limiting feature.
 
 ### 📋 Task Management
 
