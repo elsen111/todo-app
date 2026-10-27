@@ -1,9 +1,5 @@
-
-
 const TodosPage = () => {
-  return (
-    <div>TodosPage</div>
-  )
-}
+  return <div>TodosPage</div>;
+};
 
-export default TodosPage
+export default TodosPage;

@@ -1,9 +1,5 @@
-
-
 const SecurityTab = () => {
-  return (
-    <div>SecurityTab</div>
-  )
-}
+  return <div>SecurityTab</div>;
+};
 
-export default SecurityTab
+export default SecurityTab;

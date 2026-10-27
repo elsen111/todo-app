@@ -1,18 +1,17 @@
-import SEO from "../../components/common/seo/SEO"
-import CallToActionSection from "../../components/homePage/CallToActionSection"
-import FeaturesSection from "../../components/homePage/FeaturesSection"
-import Footer from "../../components/homePage/Footer"
-import Header from "../../components/homePage/Header"
-import HeroSection from "../../components/homePage/HeroSection"
-import HowItWorksSection from "../../components/homePage/HowItWorksSection"
-
+import SEO from '../../components/common/seo/SEO';
+import CallToActionSection from '../../components/homePage/CallToActionSection';
+import FeaturesSection from '../../components/homePage/FeaturesSection';
+import Footer from '../../components/homePage/Footer';
+import Header from '../../components/homePage/Header';
+import HeroSection from '../../components/homePage/HeroSection';
+import HowItWorksSection from '../../components/homePage/HowItWorksSection';
 
 const HomePage = () => {
   return (
     <>
-      <SEO /> 
+      <SEO />
       <Header />
-      <main className="relative z-0 md:top-30 top-26">
+      <main className="relative top-26 z-0 md:top-30">
         <HeroSection />
         <FeaturesSection />
         <HowItWorksSection />
@@ -20,7 +19,7 @@ const HomePage = () => {
       </main>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

@@ -1,5 +1,4 @@
-import { Outlet } from "react-router-dom"
-
+import { Outlet } from 'react-router-dom';
 
 const SettingsPage = () => {
   return (
@@ -7,7 +6,7 @@ const SettingsPage = () => {
       SettingsPage
       <Outlet />
     </div>
-  )
-}
+  );
+};
 
-export default SettingsPage
+export default SettingsPage;

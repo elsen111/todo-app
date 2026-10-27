@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   /* Breakpoint */
@@ -35,5 +35,5 @@ button {
 
 * {
   box-sizing: border-box !important;
-  font-family: "Manrope", sans-serif;
+  font-family: 'Manrope', sans-serif;
 }

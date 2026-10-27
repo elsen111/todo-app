@@ -1,9 +1,5 @@
-
-
 const AccountTab = () => {
-  return (
-    <div>AccountTab</div>
-  )
-}
+  return <div>AccountTab</div>;
+};
 
-export default AccountTab
+export default AccountTab;

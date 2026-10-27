@@ -1,5 +1,4 @@
-import SEO from "../../components/common/seo/SEO"
-
+import SEO from '../../components/common/seo/SEO';
 
 const DashboardHomePage = () => {
   return (
@@ -7,7 +6,7 @@ const DashboardHomePage = () => {
       <SEO title="User Dashboard" />
       DashboardHomePage
     </div>
-  )
-}
+  );
+};
 
-export default DashboardHomePage
+export default DashboardHomePage;
