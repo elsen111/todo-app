@@ -19,14 +19,14 @@ const Navbar = () => {
         <nav className="flex flex-wrap items-center justify-between gap-4 md:gap-10">
             <div className="items-center gap-7 hidden md:flex">
                 <a
-                    href="/#features"
+                    href="#features"
                     className="relative px-1 py-3 text-3xl text-main after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:origin-bottom-right after:scale-x-0 after:bg-secondary after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100"
                 >
                     Features
                 </a>
 
                 <a
-                    href="/#how-it-works"
+                    href="#how-it-works"
                     className="relative px-1 py-3 text-3xl text-main after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:origin-bottom-right after:scale-x-0 after:bg-secondary after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100"
                 >
                     How it works

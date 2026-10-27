@@ -6,7 +6,7 @@ import FeatureCard from './FeatureCard'
 
 const FeaturesSection = () => {
   return (
-    <SectionContainer>
+    <SectionContainer id="features">
       <SectionHeader title={featuresSectionData.title} tagline={featuresSectionData.tagline} />
       <div className='grid md:grid-cols-3 xxs:grid-cols-2 grid-cols-1 gap-5 md:gap-10 mt-15'>
         {

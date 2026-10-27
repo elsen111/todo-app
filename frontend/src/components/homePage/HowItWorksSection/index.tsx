@@ -6,7 +6,7 @@ import Card from './Card'
 
 const HowItWorksSection = () => {
   return (
-    <SectionContainer>
+    <SectionContainer id='how-it-works'>
       <SectionHeader title={howItWorksSectionData.title}/>
       <div className='grid md:grid-cols-3 xxs:grid-cols-2 grid-cols-1 gap-5 md:gap-10 mt-15'>
               {
