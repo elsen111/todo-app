@@ -41,3 +41,13 @@ export interface HowItWorksSectionData {
 export interface CTASectionData extends GenericData {}
 
 export interface FooterSiteMetaData extends SiteMetaData {}
+
+export interface NavLinkItem {
+  label: string;
+  path: string;
+}
+
+export interface NavGroupData {
+  title: string;
+  links: NavLinkItem[];
+}

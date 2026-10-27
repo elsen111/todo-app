@@ -4,6 +4,7 @@ import type {
   FooterSiteMetaData,
   HeroSectionData,
   HowItWorksSectionData,
+  NavGroupData,
   SiteMetaData,
 } from "../types/siteContentTypes";
 
@@ -106,3 +107,32 @@ export const footerSiteMetaData: FooterSiteMetaData = {
   name: "TaskWise",
   metaDescription: "Personal productivity app..",
 };
+
+export const brandTagline: string = "A personal productivity app."
+
+export const footerNavData: NavGroupData[] = [
+  {
+    title: "Product",
+    links: [
+      { label: "Features", path: "#features" },
+      { label: "How it works", path: "#how-it-works" },
+    ],
+  },
+  {
+    title: "Account",
+    links: [
+      { label: "Login", path: "/login" },
+      { label: "Register", path: "/register" },
+      { label: "Forgot password", path: "/forgot-password" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { label: "Privacy", path: "/privacy" },
+      { label: "Terms", path: "/terms" },
+    ],
+  },
+];
+
+export const footerCopyright: string = `\u00A9 ${new Date().getFullYear()} ${siteMetaData.name}. All rights reserved`

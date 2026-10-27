@@ -1,6 +1,7 @@
 import SEO from "../../components/common/seo/SEO"
 import CallToActionSection from "../../components/homePage/CallToActionSection"
 import FeaturesSection from "../../components/homePage/FeaturesSection"
+import Footer from "../../components/homePage/Footer"
 import Header from "../../components/homePage/Header"
 import HeroSection from "../../components/homePage/HeroSection"
 import HowItWorksSection from "../../components/homePage/HowItWorksSection"
@@ -17,6 +18,7 @@ const HomePage = () => {
         <HowItWorksSection />
         <CallToActionSection />
       </main>
+      <Footer />
     </>
   )
 }
