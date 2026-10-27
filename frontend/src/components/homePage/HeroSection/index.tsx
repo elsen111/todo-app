@@ -19,7 +19,7 @@ const HeroSection = () => {
                               <h2 className="w-auto max-w-130 sm:max-w-200 font-bold text-[3.4rem] sm:text-[4.8rem] lg:text-[5.6rem] leading-18 sm:leading-30"> {heroSectionData.title} </h2>
                               <p className="text-4xl text-black/80 font-medium max-w-250 leading-12 sm:leading-15"> {heroSectionData.tagline} </p>
                               <Button variant={"lightGreen"} isLink path={user ? "\\dashboard" : '\\register'}>
-                                    Start Free
+                                    {user ? "Go to workspace" : "Start Free"}
                               </Button>
                         </div>
                   </SectionContainer>

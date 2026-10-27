@@ -10,7 +10,7 @@ type ButtonProps = {
 
 const colors = {
       green: " text-white  border-primary bg-primary hover:border-primary/90 hover:bg-primary/90 border-secondary/30",
-      white: "text-main border-secondary/80 hover:border-secondary/50 hover:bg-secondary/5 hover:text-main/80",
+      white: "text-main border-secondary/80 hover:border-secondary/50 hover:text-main/80 bg-white",
       lightGreen: "text-white bg-green/80 hover:border-green/70 hover:bg-green/70 border-green/30",
 }
 
