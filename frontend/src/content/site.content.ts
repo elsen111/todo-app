@@ -72,21 +72,21 @@ export const featuresSectionData: FeaturesSectionData = {
 
 export const howItWorksSectionData: HowItWorksSectionData = {
   title: "How it works?",
-  HowItWorksCards: [
+  howItWorksCards: [
     {
-      icon: "1",
+      step: "1",
       title: "Create your account",
       description: "Register in seconds and verify your email.",
     },
 
     {
-      icon: "2",
+      step: "2",
       title: "Add your tasks",
       description: "Set priorities, deadlines and reminders.",
     },
 
     {
-      icon: "3",
+      step: "3",
       title: "Stay on track",
       description: "Follow your calendar and see your progress.",
     },

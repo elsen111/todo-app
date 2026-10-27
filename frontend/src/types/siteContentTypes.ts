@@ -17,19 +17,25 @@ export interface SectionHeader {
 
 export interface HeroSectionData extends SectionHeader{}
 
-export interface CardData {
-  icon: LucideIcon | string,
+export interface FeatureCardData {
+  icon: LucideIcon,
   title: string,
   description: string
 }
 
 export interface FeaturesSectionData extends SectionHeader {
-  features: CardData[];
+  features: FeatureCardData[];
+}
+
+export interface HowItWorksSectionCardsData {
+  step: string,
+  title: string,
+  description: string
 }
 
 export interface HowItWorksSectionData {
   title: string;
-  HowItWorksCards: CardData[];
+  howItWorksCards: HowItWorksSectionCardsData[];
 }
 
 export interface CTASectionData extends GenericData {}
