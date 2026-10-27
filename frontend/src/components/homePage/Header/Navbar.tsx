@@ -1,7 +1,8 @@
 
 import { Link } from "react-router-dom";
 import { LogOut } from "lucide-react";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../../context/AuthContext";
+import Button from "../../common/ui/Button";
 
 const getInitials = (fullname: string): string =>
     fullname
@@ -52,20 +53,14 @@ const Navbar = () => {
                     </button>
                 </div>
             ) : (
-                <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-10">
-                    <Link
-                        to="/login"
-                        className="flex items-center justify-center rounded-2xl border-2 border-secondary/30 sm:px-7 px-5 py-3 sm:py-4.5 text-3xl font-medium text-main transition-all duration-200 hover:border-secondary hover:bg-secondary/5"
-                    >
+                <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-10">
+                    <Button variant={"white"} isLink path="\login">
                         Login
-                    </Link>
+                    </Button>
 
-                    <Link
-                        to="/register"
-                        className="flex items-center justify-center rounded-2xl border-2 border-primary bg-primary sm:px-7 px-5 py-3 sm:py-4.5 text-3xl font-medium text-white transition-all duration-200 hover:border-primary/90 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20"
-                    >
+                    <Button variant={"green"} isLink path="\register">
                         Get Started
-                    </Link>
+                    </Button>
                 </div>
             )}
         </nav>

@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async"
-import { siteMetaData } from "../../../data/site.data"
+import { siteMetaData } from "../../../content/site.content"
 
 interface SEO_Props {
       title?: string,

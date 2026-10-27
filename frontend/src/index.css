@@ -1,6 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
 @import "tailwindcss";
 
 @theme {
+  /* Breakpoint */
+  --breakpoint-xxs: 420px;
+
   /* Background */
   --color-primary: #0f766e;
   --color-light-green: #e6f4f1;
@@ -19,10 +24,17 @@ html {
 
 body {
   scroll-behavior: smooth;
+  position: relative;
 }
 
 a,
 button {
   transition: all;
   transition-duration: 0.4s;
+}
+
+* {
+  box-sizing: border-box !important;
+  font-family: "Manrope", sans-serif;
+  transition: all;
 }

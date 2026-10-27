@@ -1,3 +1,5 @@
+import type { LucideIcon } from "lucide-react";
+
 export interface SiteMetaData {
   name: string;
   metaDescription: string;
@@ -8,12 +10,21 @@ export interface GenericData {
   description: string;
 }
 
-export interface HeroSectionData extends GenericData {}
+export interface SectionHeader {
+  title: string;
+  tagline: string;
+}
 
-interface CardData extends GenericData {}
+export interface HeroSectionData extends SectionHeader{}
 
-export interface FeaturesSectionData extends GenericData {
-  featureCards: CardData[];
+export interface CardData {
+  icon: LucideIcon | string,
+  title: string,
+  description: string
+}
+
+export interface FeaturesSectionData extends SectionHeader {
+  features: CardData[];
 }
 
 export interface HowItWorksSectionData {
