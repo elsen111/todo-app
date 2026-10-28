@@ -4,6 +4,7 @@ import com.todobackend.common.dto.ApiResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.*;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.method.ParameterErrors;
@@ -22,6 +23,18 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
+    @ExceptionHandler(InvalidTokenException.class)
+    public ResponseEntity<ApiResponse<Void>> handleInvalidToken(
+            InvalidTokenException ex, HttpServletRequest request) {
+        return build(HttpStatus.UNAUTHORIZED, ex.getMessage(), request.getRequestURI());
+    }
+
+    @ExceptionHandler(ConflictException.class)
+    public ResponseEntity<ApiResponse<Void>> handleConflict(
+            ConflictException ex, HttpServletRequest request) {
+        return build(HttpStatus.CONFLICT, ex.getMessage(), request.getRequestURI());
+    }
+
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<ApiResponse<Void>> handleNotFound(
             NotFoundException ex, HttpServletRequest request) {
@@ -31,7 +44,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(AuthenticationException.class)
     public ResponseEntity<ApiResponse<Void>> handleAuth(
             AuthenticationException ex, HttpServletRequest request) {
-        return build(HttpStatus.UNAUTHORIZED, "Invalid credentials", request.getRequestURI());
+        return build(HttpStatus.UNAUTHORIZED, "Invalid email or password", request.getRequestURI());
     }
 
     @ExceptionHandler(AccessDeniedException.class)
@@ -79,7 +92,23 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             }
         });
         return validation(errors, request);
+    }
 
+    @Override
+    protected ResponseEntity<Object> handleHttpMessageNotReadable(
+            HttpMessageNotReadableException ex, HttpHeaders headers,
+            HttpStatusCode status, WebRequest request) {
+
+        Throwable root = ex.getMostSpecificCause();
+        log.warn("Unreadable request body at {}: {}", path(request), root.getMessage());
+
+        String message = ex.getMessage() != null
+                && ex.getMessage().startsWith("Required request body is missing")
+                ? "Request body is missing"
+                : "Malformed request body. Send valid JSON with Content-Type: application/json";
+
+        return ResponseEntity.badRequest()
+                .body(ApiResponse.error(message, 400, path(request)));
     }
 
     @Override

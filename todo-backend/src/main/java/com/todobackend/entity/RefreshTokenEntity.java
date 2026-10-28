@@ -3,7 +3,7 @@ package com.todobackend.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -52,7 +52,7 @@ public class RefreshTokenEntity {
             name = "expires_at",
             nullable = false
     )
-    private Instant expiresAt;
+    private LocalDateTime expiresAt;
 
     @Column(nullable = false)
     @Builder.Default
@@ -63,11 +63,11 @@ public class RefreshTokenEntity {
             nullable = false,
             updatable = false
     )
-    private Instant createdAt;
+    private LocalDateTime createdAt;
 
     @PrePersist
     protected void onCreate() {
-        createdAt = Instant.now();
+        createdAt = LocalDateTime.now();
     }
 
     public void revoke() {
@@ -75,7 +75,7 @@ public class RefreshTokenEntity {
     }
 
     public boolean isExpired() {
-        return Instant.now().isAfter(expiresAt);
+        return LocalDateTime.now().isAfter(expiresAt);
     }
 
     public boolean isUsable() {
