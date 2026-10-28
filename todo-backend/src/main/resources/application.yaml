@@ -7,7 +7,8 @@
 
     liquibase:
       enabled: true
-      change-log: classpath:db/changelog/db.changelog-master.yaml
+      change-log: classpath:db/db.changelog-master.yaml
+      default-schema: public
 
     jpa:
       open-in-view: false
