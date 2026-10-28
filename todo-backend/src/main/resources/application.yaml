@@ -45,16 +45,19 @@
       from: ${MAIL_FROM:no-reply@example.com}
 
     rate-limit:
-      enabled: true
-      capacity: ${RATE_LIMIT_CAPACITY:100}
-      refill-tokens: ${RATE_LIMIT_REFILL_TOKENS:100}
-      refill-duration: ${RATE_LIMIT_REFILL_DURATION:1m}
+      auth:
+        capacity: 5
+        refill-duration-minutes: 1
+
+      general:
+        capacity: 100
+        refill-duration-minutes: 1
 
   springdoc:
     api-docs:
-      path: /v3/api-docs
+      path: /v1/api-docs
     swagger-ui:
-      path: /swagger-ui.html
+      path: /v1/swagger-ui.html
       operations-sorter: method
       tags-sorter: alpha
       display-request-duration: true

@@ -1,4 +1,4 @@
-package com.todobackend.common.config;
+package com.todobackend.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;

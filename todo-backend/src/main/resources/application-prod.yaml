@@ -1,37 +1,40 @@
-  spring:
-    datasource:
-      url: ${DB_URL}
-      username: ${DB_USERNAME}
-      password: ${DB_PASSWORD}
-      driver-class-name: org.postgresql.Driver
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
 
-    jpa:
-      hibernate:
-        ddl-auto: validate
-      show-sql: false
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
 
-    mail:
-      host: ${MAIL_HOST}
-      port: ${MAIL_PORT}
-      username: ${MAIL_USERNAME}
-      password: ${MAIL_PASSWORD}
-      properties:
-        mail:
-          smtp:
-            auth: true
-            starttls:
-              enable: true
+  mail:
+    host: ${MAIL_HOST}
+    port: ${MAIL_PORT}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
-  springdoc:
-    swagger-ui:
-      enabled: false
-    api-docs:
-      enabled: false
+springdoc:
+  swagger-ui:
+    enabled: false
+  api-docs:
+    enabled: false
 
-  logging:
-    level:
-      root: INFO
-      com.todo: INFO
-      org.springframework.security: INFO
-      org.hibernate.SQL: WARN
-      liquibase: INFO
+logging:
+  level:
+    root: INFO
+    com.todo: INFO
+    org.springframework.security: INFO
+    org.hibernate.SQL: WARN
+    liquibase: INFO
+
+server:
+  forward-headers-strategy: native
