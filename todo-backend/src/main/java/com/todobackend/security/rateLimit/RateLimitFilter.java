@@ -1,6 +1,7 @@
 package com.todobackend.security.rateLimit;
 
 import com.todobackend.common.dto.ApiResponse;
+import com.todobackend.config.properties.RateLimitProperties;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,4 +1,4 @@
-package com.todobackend.security.rateLimit;
+package com.todobackend.config.properties;
 
 import lombok.Getter;
 import lombok.Setter;

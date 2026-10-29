@@ -1,4 +1,4 @@
-package com.todobackend.security.cors;
+package com.todobackend.config.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

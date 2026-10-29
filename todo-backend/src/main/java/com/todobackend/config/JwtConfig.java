@@ -1,6 +1,6 @@
 package com.todobackend.config;
 
-import com.todobackend.security.jwt.JwtProperties;
+import com.todobackend.config.properties.JwtProperties;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

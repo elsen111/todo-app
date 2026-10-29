@@ -14,7 +14,7 @@ import com.todobackend.mapper.UserMapper;
 import com.todobackend.service.AuthService;
 import com.todobackend.repository.RefreshTokenRepository;
 import com.todobackend.repository.UserRepository;
-import com.todobackend.security.jwt.JwtProperties;
+import com.todobackend.config.properties.JwtProperties;
 import com.todobackend.security.jwt.JwtService;
 import com.todobackend.security.principal.UserPrincipal;
 import com.todobackend.security.util.TokenHashUtil;

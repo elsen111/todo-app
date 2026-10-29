@@ -1,5 +1,6 @@
 package com.todobackend.security.jwt;
 
+import com.todobackend.config.properties.JwtProperties;
 import com.todobackend.security.principal.UserPrincipal;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;

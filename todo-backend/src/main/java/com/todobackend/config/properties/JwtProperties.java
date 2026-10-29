@@ -1,4 +1,4 @@
-package com.todobackend.security.jwt;
+package com.todobackend.config.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
