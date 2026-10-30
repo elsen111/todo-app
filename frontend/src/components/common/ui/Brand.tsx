@@ -15,7 +15,7 @@ const Brand = () => {
           alt="logo"
           title="TaskWise"
         />
-        <h1 className="text-main xs:block hidden text-[3rem] font-medium sm:text-5xl">
+        <h1 className="text-main xs:block hidden text-[3rem] font-bold sm:text-5xl">
           {siteMetaData?.name || 'ToDo app'}
         </h1>
       </Link>

@@ -20,8 +20,7 @@ const FeatureCard = ({ icon: Icon, title, description }: FeatureCardProps) => {
         {title}
       </h6>
       <p className="text-secondary text-[1.6rem] font-medium md:text-[1.8rem]">
-        {' '}
-        {description}{' '}
+        {description}
       </p>
     </section>
   );

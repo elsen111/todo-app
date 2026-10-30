@@ -1,4 +1,6 @@
 import type {
+  AuthFormHeaderData,
+  AuthHeroData,
   CTASectionData,
   FeaturesSectionData,
   FooterSiteMetaData,
@@ -9,12 +11,15 @@ import type {
 } from '../types/siteContentTypes';
 
 import {
+  Calendar,
   Calendars,
   ChartColumn,
+  Check,
   ListTodo,
   MailClock,
   SearchSlash,
   Tags,
+  Zap,
 } from 'lucide-react';
 
 export const siteMetaData: SiteMetaData = {
@@ -133,3 +138,34 @@ export const footerNavData: NavGroupData[] = [
 ];
 
 export const footerCopyright: string = `\u00A9 ${new Date().getFullYear()} ${siteMetaData.name}. All rights reserved`;
+
+export const authHeroData: AuthHeroData = {
+  titleTop: 'Small steps',
+  titleBottom: 'big progress.',
+  tagline:
+    'Organize your days, get things done, and build better habits - one task at a time.',
+  features: [
+    {
+      icon: Check,
+      title: 'Stay organized',
+      description: 'Keep your tasks in one place',
+    },
+
+    {
+      icon: Zap,
+      title: 'Be more productive',
+      description: 'Focus on what matters',
+    },
+
+    {
+      icon: Calendar,
+      title: 'Build good habits',
+      description: 'Make consistency easy',
+    },
+  ],
+};
+
+export const authFormHeaderData: AuthFormHeaderData = {
+  heading: 'Welcome!',
+  description: 'Log in to your account or create a new one to get started.',
+};
