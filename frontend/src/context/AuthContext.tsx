@@ -5,7 +5,7 @@ import {
   useState,
   type ReactNode,
 } from 'react';
-import { dummyUser, type DummyUser } from '../content/dummyData';
+import { type DummyUser } from '../content/dummyData';
 
 interface AuthContextValue {
   user: DummyUser | null;
@@ -26,8 +26,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // .catch(() => setUser(null))
     // .finally(() => setIsLoading(false));
 
-    setUser(dummyUser);
-    // setUser(null);
+    // setUser(dummyUser);
+    setUser(null);
     setIsLoading(false);
   }, []);
 

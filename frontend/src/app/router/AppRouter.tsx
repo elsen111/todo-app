@@ -26,11 +26,7 @@ const AppRouter = () => {
 
         {/* Auth Pages */}
         <Route
-          path="/login"
-          element={<AuthPage />}
-        />
-        <Route
-          path="/register"
+          path="/auth"
           element={<AuthPage />}
         />
         <Route

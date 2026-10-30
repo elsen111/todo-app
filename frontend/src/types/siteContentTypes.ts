@@ -51,3 +51,21 @@ export interface NavGroupData {
   title: string;
   links: NavLinkItem[];
 }
+
+export interface AuthHeroFeature {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
+
+export interface AuthHeroData {
+  titleTop: string;
+  titleBottom: string;
+  tagline: string;
+  features: AuthHeroFeature[];
+}
+
+export interface AuthFormHeaderData {
+  heading: string;
+  description: string;
+}

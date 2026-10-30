@@ -56,18 +56,18 @@ const Navbar = () => {
           <Button
             variant={'white'}
             isLink
-            path="\login"
+            path="\auth"
           >
             Login
           </Button>
 
-          <Button
+          {/* <Button
             variant={'green'}
             isLink
             path="\register"
           >
             Get Started
-          </Button>
+          </Button> */}
         </div>
       )}
     </nav>

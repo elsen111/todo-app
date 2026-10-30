@@ -25,7 +25,7 @@ const HeroSection = () => {
             isLink
             path={user ? '\\dashboard' : '\\register'}
           >
-            {user ? 'Go to workspace' : 'Start Free'}
+            {user ? 'Go to workspace' : 'Get Started'}
           </Button>
         </div>
       </SectionContainer>
