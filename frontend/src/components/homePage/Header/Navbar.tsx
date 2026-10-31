@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { LogOut } from 'lucide-react';
 import { useAuth } from '../../../context/AuthContext';
 import Button from '../../common/ui/Button';
+import { toast } from 'react-toast-kit';
 
 const getInitials = (fullname: string): string =>
   fullname
@@ -14,7 +15,25 @@ const getInitials = (fullname: string): string =>
 const Navbar = () => {
   const { user, logout } = useAuth();
 
-  console.log(user);
+  const handleLogout = async () => {
+    try {
+      await logout();
+
+      toast({
+        description: 'You have been logged out successfully.',
+        variant: 'success',
+        duration: 2000,
+        position: 'top-center',
+      });
+    } catch {
+      toast({
+        description: 'Logout failed. Please try again.',
+        variant: 'error',
+        duration: 2000,
+        position: 'top-center',
+      });
+    }
+  };
 
   return (
     <nav className="flex flex-wrap items-center justify-between gap-4 md:gap-10">
@@ -46,7 +65,7 @@ const Navbar = () => {
 
           <button
             type="button"
-            onClick={logout}
+            onClick={handleLogout}
             aria-label="Log out"
             className="flex cursor-pointer items-center justify-center rounded-2xl px-5 py-4.5 text-3xl text-white transition-all duration-200 hover:translate-x-2"
           >

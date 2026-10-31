@@ -20,6 +20,8 @@
     "react-dom": "^19.2.8",
     "react-helmet-async": "^3.0.0",
     "react-router-dom": "^7.18.4",
+    "react-spinners": "^0.17.1",
+    "react-toast-kit": "^1.0.15",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
