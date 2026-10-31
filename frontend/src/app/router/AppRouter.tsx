@@ -13,6 +13,7 @@ import NotificationsTab from '../../components/settings/NotificationsTab';
 import AccountTab from '../../components/settings/AccountTab';
 import NotFoundPage from '../../pages/public/NotFoundPage';
 import ProfileTab from '../../components/settings/ProfileTab';
+import ProtectedRoute from './ProtectedRoute';
 
 const AppRouter = () => {
   return (
@@ -35,56 +36,58 @@ const AppRouter = () => {
         />
 
         {/* Protected (Dashboard Pages) */}
-        <Route
-          path="/dashboard"
-          element={<DashboardLayout />}
-        >
+        <Route element={<ProtectedRoute />}>
           <Route
-            index
-            element={<DashboardHomePage />}
-          />
-          <Route
-            path="todos"
-            element={<TodosPage />}
-          />
-          <Route
-            path="statistics"
-            element={<StatisticsPage />}
-          />
-          <Route
-            path="calendar"
-            element={<CalendarPage />}
-          />
-          <Route
-            path="settings"
-            element={<SettingsPage />}
+            path="/dashboard"
+            element={<DashboardLayout />}
           >
             <Route
               index
-              element={
-                <Navigate
-                  to="profile"
-                  replace
-                />
-              }
+              element={<DashboardHomePage />}
             />
+            <Route
+              path="todos"
+              element={<TodosPage />}
+            />
+            <Route
+              path="statistics"
+              element={<StatisticsPage />}
+            />
+            <Route
+              path="calendar"
+              element={<CalendarPage />}
+            />
+            <Route
+              path="settings"
+              element={<SettingsPage />}
+            >
+              <Route
+                index
+                element={
+                  <Navigate
+                    to="profile"
+                    replace
+                  />
+                }
+              />
 
-            <Route
-              path="profile"
-              element={<ProfileTab />}
-            />
-            <Route
-              path="security"
-              element={<SecurityTab />}
-            />
-            <Route
-              path="notifications"
-              element={<NotificationsTab />}
-            />
-            <Route
-              path="account"
-              element={<AccountTab />}
-            />
+              <Route
+                path="profile"
+                element={<ProfileTab />}
+              />
+              <Route
+                path="security"
+                element={<SecurityTab />}
+              />
+              <Route
+                path="notifications"
+                element={<NotificationsTab />}
+              />
+              <Route
+                path="account"
+                element={<AccountTab />}
+              />
+            </Route>
           </Route>
         </Route>
 

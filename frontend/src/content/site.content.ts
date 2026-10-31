@@ -8,7 +8,7 @@ import type {
   HowItWorksSectionData,
   NavGroupData,
   SiteMetaData,
-} from '../types/siteContentTypes';
+} from '../types/content/siteContentTypes';
 
 import {
   Calendar,
