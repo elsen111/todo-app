@@ -14,6 +14,8 @@ const getInitials = (fullname: string): string =>
 const Navbar = () => {
   const { user, logout } = useAuth();
 
+  console.log(user);
+
   return (
     <nav className="flex flex-wrap items-center justify-between gap-4 md:gap-10">
       <div className="hidden items-center gap-7 md:flex">
@@ -39,7 +41,7 @@ const Navbar = () => {
             aria-label="Go to dashboard"
             className="border-primary bg-primary hover:border-primary/90 hover:bg-primary/90 hover:shadow-primary/20 flex h-18 w-18 items-center justify-center rounded-full border-2 p-4.5 text-3xl font-medium text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg sm:h-20 sm:w-20"
           >
-            {getInitials(user.fullname)}
+            {getInitials(user.fullName)}
           </Link>
 
           <button
@@ -60,14 +62,6 @@ const Navbar = () => {
           >
             Login
           </Button>
-
-          {/* <Button
-            variant={'green'}
-            isLink
-            path="\register"
-          >
-            Get Started
-          </Button> */}
         </div>
       )}
     </nav>

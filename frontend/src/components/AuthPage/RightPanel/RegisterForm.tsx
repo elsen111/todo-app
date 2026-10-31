@@ -1,14 +1,21 @@
 import { Eye, EyeClosed, Lock, Mail, User } from 'lucide-react';
 import { useState, type FormEvent } from 'react';
-import ValidationItem from '../../common/ui/ValidationItem';
+import { useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
+import ValidationItem from '../../common/ui/ValidationItem';
+import { useAuth } from '../../../context/AuthContext';
+import { getErrorMessage } from '../../../utils/getErrorMessage';
 
 const RegisterForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const navigate = useNavigate();
+  const { register } = useAuth();
 
   const emailValid =
     email.length >= 11 &&
@@ -29,13 +36,22 @@ const RegisterForm = () => {
 
   const formValid = emailValid && fullNameValid && passwordValid;
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!formValid) return;
+    if (!formValid || isSubmitting) return;
 
+    setError('');
+    setIsSubmitting(true);
 
-    console.log({ fullName, email, password });
+    try {
+      await register({ fullName, email, password });
+      navigate('/dashboard', { replace: true });
+    } catch (err) {
+      setError(getErrorMessage(err, 'Registration failed.'));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -126,15 +142,19 @@ const RegisterForm = () => {
           </div>
         </div>
 
+        {error && <p className="text-sm text-red-500">{error}</p>}
+
         <button
           type="submit"
-          disabled={!formValid}
+          disabled={!formValid || isSubmitting}
           className={clsx(
             'bg-primary hover:bg-primary/90 w-full cursor-pointer rounded-xl py-3 text-[1.6rem] font-semibold text-white transition active:scale-95 disabled:cursor-not-allowed disabled:opacity-50',
-            formValid ? 'pointer-events-auto' : 'pointer-events-none',
+            formValid && !isSubmitting
+              ? 'pointer-events-auto'
+              : 'pointer-events-none',
           )}
         >
-          Register
+          {isSubmitting ? 'Signing up...' : 'Register'}
         </button>
       </form>
     </section>
