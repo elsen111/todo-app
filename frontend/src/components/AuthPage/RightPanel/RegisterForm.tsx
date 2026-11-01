@@ -18,6 +18,7 @@ const RegisterForm = () => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -43,8 +44,10 @@ const RegisterForm = () => {
   };
 
   const passwordValid = Object.values(passwordValidations).every(Boolean);
+  const passwordsMatching = confirmPassword.trim() === password.trim();
 
-  const formValid = fullNameValid && emailValid && passwordValid;
+  const formValid =
+    fullNameValid && emailValid && passwordValid && passwordsMatching;
 
   const clearError = () => {
     if (error) setError('');
@@ -62,6 +65,11 @@ const RegisterForm = () => {
 
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
+    clearError();
+  };
+
+  const handleConfirmPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setConfirmPassword(e.target.value);
     clearError();
   };
 
@@ -222,6 +230,68 @@ const RegisterForm = () => {
           </div>
         </div>
 
+        <div className="space-y-2">
+          <div className="relative">
+            <Lock
+              size={20}
+              aria-hidden="true"
+              className="absolute top-1/2 left-10 -translate-y-1/2 text-gray-400"
+            />
+
+            <label
+              htmlFor="confirm-password"
+              className="sr-only"
+            >
+              Confirm password
+            </label>
+
+            <input
+              type={passwordVisible ? 'text' : 'password'}
+              name="confirm-password"
+              id="confirm-password"
+              autoComplete="confirm-password"
+              value={confirmPassword}
+              placeholder="Confirm password"
+              required
+              onChange={handleConfirmPasswordChange}
+              className="focus:border-primary w-full rounded-2xl border border-gray-300 bg-transparent py-4 pr-16 pl-26 text-[1.6rem] transition-all duration-200 outline-none focus:ring-2 focus:ring-green-100"
+            />
+
+            <button
+              type="button"
+              onClick={() => setPasswordVisible((prev) => !prev)}
+              aria-label={passwordVisible ? 'Hide password' : 'Show password'}
+              aria-pressed={passwordVisible}
+              className="absolute top-1/2 right-10 -translate-y-1/2 cursor-pointer text-gray-400"
+            >
+              {passwordVisible ? (
+                <Eye
+                  size={20}
+                  aria-hidden="true"
+                />
+              ) : (
+                <EyeClosed
+                  size={20}
+                  aria-hidden="true"
+                />
+              )}
+            </button>
+          </div>
+
+          {confirmPassword.length !== 0 && (
+            <div className="space-y-1 px-2">
+              <ValidationItem
+                valid={passwordsMatching}
+                label={
+                  passwordsMatching
+                    ? 'Passwords match'
+                    : "Passwords don't match"
+                }
+              />
+            </div>
+          )}
+        </div>
+
         <p
           id="register-error"
           role="alert"
@@ -237,7 +307,7 @@ const RegisterForm = () => {
         <button
           type="submit"
           disabled={!formValid || isSubmitting}
-          className="bg-primary hover:bg-primary/90 flex w-full items-center justify-center rounded-xl py-3 text-[1.6rem] font-semibold text-white transition active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+          className="bg-primary hover:bg-primary/90 flex w-full cursor-pointer items-center justify-center rounded-xl py-3 text-[1.6rem] font-semibold text-white transition active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {isSubmitting ? (
             <ClipLoader
