@@ -1,13 +1,14 @@
 package com.todobackend.controller;
 
 import com.todobackend.common.dto.ApiResponse;
-import com.todobackend.dto.request.LoginRequest;
-import com.todobackend.dto.request.RefreshTokenRequest;
-import com.todobackend.dto.request.RegisterRequest;
+import com.todobackend.dto.request.*;
 import com.todobackend.dto.response.AuthResponse;
 import com.todobackend.dto.response.UserResponse;
+import com.todobackend.dto.response.VerifyResetOtpResponse;
 import com.todobackend.security.principal.UserPrincipal;
 import com.todobackend.service.AuthService;
+import com.todobackend.service.PasswordResetService;
+import com.todobackend.service.impl.PasswordResetServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final AuthService authService;
+    private final PasswordResetService passwordResetService;
 
 
     @Operation(
@@ -104,6 +106,55 @@ public class AuthController {
         authService.logout(request);
 
         return ResponseEntity.ok(ApiResponse.success("User logged out successfully", null));
+    }
+
+    @Operation(
+            summary = "Request password reset",
+            description = "Sends a password reset OTP to the user's registered email address."
+    )
+    @PostMapping("/forgot-password")
+    public ResponseEntity<ApiResponse<Void>> forgotPassword(
+            @RequestBody @Valid ForgotPasswordRequest request
+    ) {
+        passwordResetService.forgotPassword(request);
+
+        return ResponseEntity.ok(
+                ApiResponse.success(
+                        "If an account exists with this email, password reset instructions will be sent.",
+                        null
+                )
+        );
+    }
+
+    @Operation(
+            summary = "Verify password reset OTP",
+            description = "Verifies the OTP and issues a short-lived password reset token."
+    )
+    @PostMapping("/verify-reset-otp")
+    public ResponseEntity<ApiResponse<VerifyResetOtpResponse>> verifyResetOtp(
+            @RequestBody @Valid VerifyResetOtpRequest request
+    ) {
+        VerifyResetOtpResponse response =
+                passwordResetService.verifyResetOtp(request);
+
+        return ResponseEntity.ok(
+                ApiResponse.success("OTP verified successfully", response)
+        );
+    }
+
+    @Operation(
+            summary = "Reset password",
+            description = "Resets the user's password using a valid password reset token."
+    )
+    @PostMapping("/reset-password")
+    public ResponseEntity<ApiResponse<Void>> resetPassword(
+            @RequestBody @Valid ResetPasswordRequest request
+    ) {
+        passwordResetService.resetPassword(request);
+
+        return ResponseEntity.ok(
+                ApiResponse.success("Password reset successfully", null)
+        );
     }
 
 }
