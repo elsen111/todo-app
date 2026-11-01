@@ -1,3 +1,4 @@
+
 services:
   postgres:
     image: postgres:17-alpine
@@ -5,7 +6,7 @@ services:
     environment:
       POSTGRES_DB: todo_db
       POSTGRES_USER: ${DB_USERNAME:-postgres}
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
@@ -16,28 +17,25 @@ services:
       timeout: 3s
       retries: 10
 
-  mailpit:
-    image: axllent/mailpit:latest
-    container_name: todo-mailpit
-    ports:
-      - "1025:1025"   # SMTP
-      - "8025:8025"   # Web UI: http://localhost:8025
-
   app:
     build: .
     container_name: todo-backend
     depends_on:
       postgres:
         condition: service_healthy
-      mailpit:
-        condition: service_started
-    env_file: .env
+    env_file:
+      - .env
     environment:
-      # These override the localhost values in .env, which don't work inside Docker
-      SPRING_PROFILES_ACTIVE: dev
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-prod}
+
+      # Database
       DB_URL: jdbc:postgresql://postgres:5432/todo_db
-      MAIL_HOST: mailpit
-      MAIL_PORT: 1025
+
+      # SMTP configuration
+      MAIL_HOST: ${MAIL_HOST}
+      MAIL_PORT: ${MAIL_PORT:-587}
+      MAIL_USERNAME: ${MAIL_USERNAME}
+      MAIL_PASSWORD: ${MAIL_PASSWORD}
     ports:
       - "${SERVER_PORT:-8080}:8080"
 

@@ -1,63 +1,84 @@
-  spring:
-    application:
-      name: todo-backend
 
-    profiles:
-      default: dev
+spring:
+  application:
+    name: todo-backend
 
-    liquibase:
-      enabled: true
-      change-log: classpath:db/db.changelog-master.yaml
-      default-schema: public
+  profiles:
+    default: dev
 
-    jpa:
-      open-in-view: false
+  liquibase:
+    enabled: true
+    change-log: classpath:db/db.changelog-master.yaml
+    default-schema: public
 
-  server:
-    port: ${SERVER_PORT:8080}
+  jpa:
+    open-in-view: false
 
-  app:
-    frontend:
-      url: ${FRONTEND_URL:http://localhost:5173}
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
 
-    cors:
-      allowed-origins: ${CORS_ALLOWED_ORIGINS:${FRONTEND_URL:http://localhost:5173}}
-      allowed-methods:
-        - GET
-        - POST
-        - PUT
-        - PATCH
-        - DELETE
-        - OPTIONS
-      allowed-headers:
-        - Authorization
-        - Content-Type
-        - Accept
-      allow-credentials: true
-      max-age: 3600
+server:
+  port: ${SERVER_PORT:8080}
 
-    jwt:
-      secret: ${JWT_SECRET}
-      access-token-expiration: ${JWT_ACCESS_TOKEN_EXPIRATION:900000}
-      refresh-token-expiration: ${JWT_REFRESH_TOKEN_EXPIRATION:604800000}
+app:
+  frontend:
+    url: ${FRONTEND_URL:http://localhost:5173}
 
-    mail:
-      from: ${MAIL_FROM:no-reply@example.com}
+  password-reset:
+    otp-expiration: 5m
+    resend-cooldown: 60s
+    reset-token-expiration: 10m
+    max-attempts: 5
+    otp-length: 6
+    otp-secret: ${PASSWORD_RESET_OTP_SECRET}
 
-    rate-limit:
-      auth:
-        capacity: 5
-        refill-duration-minutes: 1
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:${FRONTEND_URL:http://localhost:5173}}
+    allowed-methods:
+      - GET
+      - POST
+      - PUT
+      - PATCH
+      - DELETE
+      - OPTIONS
+    allowed-headers:
+      - Authorization
+      - Content-Type
+      - Accept
+    allow-credentials: true
+    max-age: 3600
 
-      general:
-        capacity: 100
-        refill-duration-minutes: 1
+  jwt:
+    secret: ${JWT_SECRET}
+    access-token-expiration: ${JWT_ACCESS_TOKEN_EXPIRATION:900000}
+    refresh-token-expiration: ${JWT_REFRESH_TOKEN_EXPIRATION:604800000}
 
-  springdoc:
-    api-docs:
-      path: /v1/api-docs
-    swagger-ui:
-      path: /v1/swagger-ui.html
-      operations-sorter: method
-      tags-sorter: alpha
-      display-request-duration: true
+  rate-limit:
+    auth:
+      capacity: 5
+      refill-duration-minutes: 1
+
+    general:
+      capacity: 100
+      refill-duration-minutes: 1
+
+springdoc:
+  api-docs:
+    path: /v1/api-docs
+  swagger-ui:
+    path: /v1/swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+    display-request-duration: true

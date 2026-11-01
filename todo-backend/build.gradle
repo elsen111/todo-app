@@ -54,6 +54,9 @@ dependencies {
     implementation 'com.bucket4j:bucket4j_jdk17-core:8.14.0'
     implementation 'com.github.ben-manes.caffeine:caffeine'
 
+//    Mail templates
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
 //    Log-stash
     implementation 'net.logstash.logback:logstash-logback-encoder:8.1'
 

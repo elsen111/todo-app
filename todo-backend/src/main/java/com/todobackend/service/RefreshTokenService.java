@@ -1,7 +1,11 @@
 package com.todobackend.service;
 
+import java.util.UUID;
+
 public interface RefreshTokenService {
 
-    public String generate();
+    String generate();
+
+    void revokeAllUserRefreshTokens(UUID userId);
 
 }
